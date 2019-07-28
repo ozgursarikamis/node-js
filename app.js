@@ -1,5 +1,4 @@
 var http = require("http");
-var dt = require("./get.date");
 
 /* Create a server that runs on 1234 port */
 // http.createServer((request, response) => {
