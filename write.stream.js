@@ -1,6 +1,8 @@
 const fs = require("fs");
 
-// const readStream = fs.createReadStream("./assets/file.txt");
-require('fs').createReadStream("./assets/file.txt").on("data", chunk => {
+const file = "./assets/file.txt";
+const reader = fs.createReadStream(file, { highWaterMark: 8, start: 8, end: 64});
+
+reader.on("data", chunk => {
     console.log('chunk.toString() :', chunk.toString());
-})
+});
