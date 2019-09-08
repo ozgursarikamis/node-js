@@ -1,30 +1,35 @@
-const yargs = require("yargs");
+//process.stdout.write("hello");
 
-const argv = yargs
-    .command("lyr", "Tells whether a year is leap or not", {
-        year: {
-            description: "the year to check for",
-            alias: "y",
-            type: "number"
-        }
-    })
-    .option("time", {
-        alias: "t",
-        description: "tell the present year",
-        type: "boolean"
-    })
-    .help()
-    .alias("help", "h").argv;
+const questions = [
+    "What is your name",
+    "What would you rather be doing",
+    "What is your preferred programming language"
+];
 
-    if(argv.time) {
-        console.log(`The current time is ${new Date().toLocaleTimeString()}`);        
+const ask = (i = 0) => {
+    process.stdout.write(`\n\n\n ${questions[i]}`);
+    process.stdout.write(' > ');
+}
+
+ask();
+
+const answers = [];
+process.stdin.on('data', data => {
+    // process.stdout.write(`\n\n ${data.toString().trim()} \n\n`)
+    answers.push(data.toString().trim());
+    if(answers.length < questions.length) {
+        ask(answers.length);
+    } else {
+        process.exit();
     }
-    if(argv._.includes("lyr")) {
-        const year = argv.year || new Date().getFullYear();
-        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
-            console.log(`${year} is a Leap Year`);
-        } else {
-            console.log(`${year} is NOT a Leap Year`);
-        }
-    }
-    console.log(argv);
+});
+
+process.on("exit", () => {
+    const [name, activity, language] = answers;
+    console.log(`
+
+    Thank you for your answers.
+
+    Go ${activity} ${name} you can write ${language} code later!!!!
+    `);    
+})

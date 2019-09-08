@@ -1,2 +1,5 @@
 .vscode/
 node_modules
+build
+build/main.map
+build/main.js
