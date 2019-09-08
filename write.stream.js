@@ -1,7 +1,6 @@
 const fs = require("fs");
 
-const writeStream = fs.createWriteStream("./assets/file.txt", "UTF-8");
-
-process.stdin.on("data", data => {
-    writeStream.write(data);
-});
+// const readStream = fs.createReadStream("./assets/file.txt");
+require('fs').createReadStream("./assets/file.txt").on("data", chunk => {
+    console.log('chunk.toString() :', chunk.toString());
+})
