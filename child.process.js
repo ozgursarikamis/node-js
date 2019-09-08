@@ -6,16 +6,12 @@
 // The spawn function launches a command in a new process 
 // and we can use it to pass that command any arguments. 
 
-const { spawn } = require('child_process');
+const { fork } = require('child_process');
 
-spawn('git', ['log'], {  
-        stdio: 'inherit' // Will use process .stdout, .stdin, .stderr
-    })
-    //.stdout.pipe(process.stdout); 
-// 1st argument: executable file path 
-// 2nd argument: arguments
+const n = fork(`${__dirname}/child.process.child.js`);
 
-// Note that every child_process function 
-// will also have a “sync” version of it (e.g. spawnSync())
-
-// https://medium.com/the-guild/getting-to-know-nodes-child-process-module-8ed63038f3fa
+n.on("message", m => {
+    console.log("PARENT got message: ", m);    
+});
+// Causes the child to print: CHILD got message: { hello: 'world' }
+n.send({ hello: 'world' });
