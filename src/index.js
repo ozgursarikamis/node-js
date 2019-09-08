@@ -1,7 +1,9 @@
-const path = require("path");
-const { log } = require("util");
-const { getHeapStatistics } = require("v8");
+const readline = require("readline");
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-log(path.basename(__filename));
-log("this is a util log");
-log(getHeapStatistics());
+rl.question("how do you like node?", answer => {
+    console.log(`Your answer is : ${answer}`);    
+});
