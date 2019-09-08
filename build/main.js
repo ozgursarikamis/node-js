@@ -93,49 +93,19 @@ module.exports =
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(__dirname, __filename) {const users = __webpack_require__(/*! ./modules/users */ "./src/modules/users.js");
-
-const user = users.getUserInfo();
-console.log('user :', user);
-const message = users.message;
-console.log('message :', message);
-console.log('globals :', {
-  __dirname,
-  __filename
-});
-
-const path = __webpack_require__(/*! path */ "path");
-
-const filename = path.basename(__filename);
-console.log('path.basename(__filename) :', filename);
-console.log('process.id :', process.pid);
-console.log('process.versions.node :', process.versions.node);
-console.log('process.argv :', process.argv);
-const [,, firstName, lastName] = process.argv;
-console.log('firstName :', firstName);
-console.log('lastName :', lastName);
-/* WEBPACK VAR INJECTION */}.call(this, "src", "src\\index.js"))
-
-/***/ }),
-
-/***/ "./src/modules/users.js":
-/*!******************************!*\
-  !*** ./src/modules/users.js ***!
-  \******************************/
-/*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports.getUserInfo = () => {
-  return {
-    name: "Özgür",
-    rollNumber: 2643,
-    language: "English"
-  };
+const grab = flag => {
+  let inedxAfterFlag = process.argv.indexOf(flag) + 1;
+  return process.argv[inedxAfterFlag];
 };
 
-module.exports.message = "This is a message from users";
+const greeting = grab("--greeting");
+const user = grab("--user");
+console.log({
+  greeting,
+  user
+});
 
 /***/ }),
 
@@ -148,17 +118,6 @@ module.exports.message = "This is a message from users";
 
 module.exports = __webpack_require__(/*! G:\projects\Node\getting-started\src/index.js */"./src/index.js");
 
-
-/***/ }),
-
-/***/ "path":
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
 
 /***/ })
 
