@@ -1,0 +1,3 @@
+i like node.js
+do you like it?
+yes. i like it too...
