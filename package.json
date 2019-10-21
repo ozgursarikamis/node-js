@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/cryptiles": "^4.2.1",
     "backpack-core": "^0.8.4",
     "yargs": "^14.0.0"
   }
