@@ -13,6 +13,7 @@
   "dependencies": {
     "@hapi/cryptiles": "^4.2.1",
     "backpack-core": "^0.8.4",
+    "util": "^0.12.1",
     "yargs": "^14.0.0"
   }
 }
