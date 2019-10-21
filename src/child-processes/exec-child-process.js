@@ -8,10 +8,11 @@ const { exec } = require('child_process');
 //     console.log(`Number of files ${stdout}`);
 // });
 
-exec('nodemon --help', (err, stdout, stderr) => {
+exec('ls', (err, stdout, stderr) => {
     if (err) {
         console.error(`exec error: ${err}`);
         return;
     }
     console.log(`Number of files ${stdout}`);
 });
+
