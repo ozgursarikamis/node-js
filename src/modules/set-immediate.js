@@ -3,9 +3,9 @@ When you want to execute some piece of code asynchronously,
 but as soon as possible, one option is to use the setImmediate()
 */
 
-setImmediate(() => {
-    console.warn("setImmediate");
-});
+// setImmediate(() => {
+//     console.warn("setImmediate");
+// });
 
 let racer = () => {
     setTimeout(() => { console.log("timeout") }, 0);
@@ -26,4 +26,26 @@ let racer = () => {
 // Since the check queue occurs later than the timer queue,
 // setImmediate will be slower than setTimeout 0.
 
-racer();
+// racer();
+
+let racer1 = function () {
+    setTimeout(() => console.log("timeout"), 0);
+    setImmediate(() => console.log("immediate"));
+    process.nextTick(() => console.log("nextTick"));
+}
+
+let racer2 = function () {
+    process.nextTick(() => console.log("nextTick"));
+    setTimeout(() => console.log("timeout"), 0);
+    setImmediate(() => console.log("immediate"));
+}
+
+let racer3 = function () {
+    setImmediate(() => console.log("immediate"));
+    process.nextTick(() => console.log("nextTick"));
+    setTimeout(() => console.log("timeout"), 0);
+}
+
+// racer1();
+// racer2();
+racer3();
