@@ -49,3 +49,9 @@ let racer3 = function () {
 // racer1();
 // racer2();
 racer3();
+
+function foo(callBack) {
+    return Promise.resolve(true);
+}
+
+console.log(foo());
